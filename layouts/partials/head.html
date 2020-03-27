@@ -16,8 +16,8 @@
   {{ "<!-- Main Stylesheet -->" | safeHTML }}
   {{ $styles := resources.Get "scss/style.scss" | toCSS | minify }}
   <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
-  {{ $styles-css := resources.Get "css/syntax.css" | toCSS | minify }}
-  <link rel="stylesheet" href="{{ $styles-css.Permalink }}" media="screen">
+  {{ $styles2 := resources.Get "css/syntax.css" | toCSS | minify }}
+  <link rel="stylesheet" href="{{ $styles2.Permalink }}" media="screen">
 
   {{ "<!--Favicon-->" | safeHTML }}
   <link rel="shortcut icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
