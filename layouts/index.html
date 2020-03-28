@@ -1,8 +1,10 @@
 {{ define "main" }}
 
 <!-- featured post -->
+{{ if ( where .Site.RegularPages "Type" "featured" )}}
 <section class="section-sm">
   <div class="container">
+    <h4 class="widget-title">Featured Post</h4>
     <div class="row justify-content-center">
       <div class="col-10 featured-post-slider">
         <!-- slider item -->
@@ -11,7 +13,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col-md-5">
               {{ if .Params.Image }}
-              <img src="{{ .Params.Image | absURL }}" class="card-img" alt="{{ .Title | markdownify }}">
+              <img src="{{ .Permalink }}{{ .Params.Image }}" class="card-img" alt="{{ .Title | markdownify }}">
               {{ end }}
             </div>
             <div class="col-md-6 offset-md-1">
@@ -35,11 +37,13 @@
     </div>
   </div>
 </section>
+{{ end }}
 <!-- /featured post -->
 
 <!-- recent post -->
 <section>
   <div class="container">
+    <h4 class="widget-title">Recent Posts</h4>
     <div class="row">
       {{ range first 3 (where .Site.RegularPages "Type" "post")}}
       <div class="col-lg-4 small-post-border">
