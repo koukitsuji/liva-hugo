@@ -26,7 +26,7 @@
       <!--<div class="col-12 text-center mb-5">
         <a href="{{ .Site.BaseURL }}"><img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}"></a>
       </div>-->
-      <div class="col-lg-3 col-sm-6 mb-5">
+      <!--<div class="col-lg-3 col-sm-6 mb-5">
         <h6 class="mb-4">Contact Me</h6>
         <ul class="list-unstyled">
           <li class="mb-3"><a class="text-dark" href="tel:{{ .Site.Params.mobile }}"><i
@@ -36,12 +36,21 @@
                 class="ti-email mr-3 text-primary"></i>{{ .Site.Params.email }}</a>
           </li>
         </ul>
+      </div>-->
+      <div class="col-lg-3 hidden-sm hidden-mb"></div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Quick Links</h6>
+        <ul class="list-unstyled">
+          {{ range .Site.Menus.footer }}
+          <li class="mb-3"><a class="text-dark" href="{{ .URL | absURL }}">{{ .Pre }}  {{ .Name }}</a></li>
+          {{ end }}
+        </ul>
       </div>
       <div class="col-lg-3 col-sm-6 mb-5">
         <h6 class="mb-4">Social Contacts</h6>
         <ul class="list-unstyled">
           {{ range .Site.Params.social }}
-          <li class="mb-3"><a class="text-dark" href="{{ .link | safeURL }}">{{ .title }}</a></li>
+          <li class="mb-3"><a class="text-dark" href="{{ .link | safeURL }}"><i class="{{ .icon }}"></i>  {{ .title }}</a></li>
           {{ end }}
         </ul>
       </div>
@@ -58,14 +67,6 @@
         </ul>
         {{- end }}
         {{- end }}
-      </div>
-      <div class="col-lg-3 col-sm-6 mb-5">
-        <h6 class="mb-4">Quick Links</h6>
-        <ul class="list-unstyled">
-          {{ range .Site.Menus.footer }}
-          <li class="mb-3"><a class="text-dark" href="{{ .URL | absURL }}">{{ .Name }}</a></li>
-          {{ end }}
-        </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
         {{ .Site.Params.copyright | markdownify }}
