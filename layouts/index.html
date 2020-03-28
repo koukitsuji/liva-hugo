@@ -84,7 +84,7 @@
                 <a href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}"
                   class="text-primary">{{ . | title | humanize }}</a>
                 {{ end }}
-                <a href="{{ .Permalink }}" class="h5 d-block my-3">{{ .Title | markdownify }}</a>
+                <a href="{{ .Permalink }}" class="h4 d-block my-3" style="font-weight: bold">{{ .Title | markdownify }}</a>
                 <div class="mb-3 post-meta">
                   <span>By {{ .Site.Params.Author }}</span>
                   {{ if not .Params.HideDate }}
