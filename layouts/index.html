@@ -86,9 +86,9 @@
                 {{ end }}
                 <a href="{{ .Permalink }}" class="h4 d-block my-3" style="font-weight: bold">{{ .Title | markdownify }}</a>
                 <div class="mb-3 post-meta">
-                  <span>By {{ .Site.Params.Author }}</span>
+                  <!--<span>By {{ .Site.Params.Author }}</span>-->
                   {{ if not .Params.HideDate }}
-                  <span class="border-bottom border-primary px-2 mx-1"></span>
+                  <!--<span class="border-bottom border-primary px-2 mx-1"></span>-->
                   <span>{{ .PublishDate.Format "02 January 2006" }}</span>
                   {{ end }}
                 </div>
