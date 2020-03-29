@@ -13,7 +13,10 @@
           <!--<span>By {{ .Site.Params.Author }}</span>-->
           {{ if not .Params.HideDate }}
           <!--<span class="border-bottom border-primary px-2 mx-1"></span>-->
-          <span>{{ .PublishDate.Format "02 January 2006" }}</span>
+          <i class="far fa-clock"></i><span style="margin-left:10px;">{{ .PublishDate.Format "02 January 2006" }}</span>
+          {{ if .Params.update }}
+          <span style="margin-right:20px;">,</span><i class="fas fa-sync-alt"></i><span style="margin-left:10px;">{{ dateFormat "02 January 2006" .Params.update }}</span>
+          {{ end }}
           {{ end }}
         </div>
         {{ if .Params.image }}
