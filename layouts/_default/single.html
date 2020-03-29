@@ -4,11 +4,19 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
+        <div class="d-block">
         {{ range .Params.Categories }}
         <a href="{{ "categories/" | relLangURL }}{{ . | urlize | lower }}"
-          class="text-primary">{{ . | title | humanize }}</a>
+          class="text-primary"><i class="fas fa-bars"></i><span style="margin-left:5px;">{{ . | title | humanize }}</span></a>
         {{ end }}
-        <h2>{{ .Title | markdownify }}</h2>
+        </div>
+        <div class="d-block my-3">
+        {{ range .Params.Tags }}
+        <a href="{{ `tags/` | relLangURL }}{{ . | urlize | lower }}"
+          class="text-primary"><i class="fas fa-tag"></i><span style="margin-left:5px; margin-right:10px;">{{ . | title | humanize }}</span></a>
+        {{ end }}
+        </div>
+        <h2 style="margin-top:30px;">{{ .Title | markdownify }}</h2>
         <div class="mb-3 post-meta">
           <!--<span>By {{ .Site.Params.Author }}</span>-->
           {{ if not .Params.HideDate }}
