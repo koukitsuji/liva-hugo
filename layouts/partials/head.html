@@ -7,6 +7,41 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
   {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
   {{ hugo.Generator }}
+  <!-- Open Graph Protocol -->
+  <meta property="og:site_name" content="{{ .Site.Title }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:locale" content="ja_JP">
+  {{ if eq .Section "post" }}
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="{{ .Permalink }}{{ .Params.Image }}" />
+  <meta property="og:description" content="{{ .Description }}" />
+  <meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02" }}">
+  <meta property="article:modified_time" content="{{ dateFormat "2006-01-02" .Params.update }}">
+  <meta property="article:author" content="{{ .Site.Params.author }}">
+  <meta property="article:section" content="{{ index (.Params.Categories) 0 }}">
+  {{ range .Params.Tags }}
+  <meta property="article:tag" content="{{ . | title | humanize }}">
+  {{ end }}
+  {{ else }}
+  <meta property="og:title" content="{{ .Site.Title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{{ .Site.Params.logo | absURL }}" />
+  <meta property="og:description" content="{{ .Site.Params.description }}" />
+  {{ end }}
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@{{ .Site.Params.twitterID }}" />
+  <meta name="twitter:image:alt" content="アイキャッチ">
+  {{ if eq .Section "post" }}
+  <meta name="twitter:title" content="{{ .Title }}">
+  <meta name="twitter:description" content="{{ .Description }}">
+  <meta name="twitter:image" content="{{ .Permalink }}{{ .Params.Image }}">
+  {{ else }}
+  <meta name="twitter:title" content="{{ .Site.Title }}">
+  <meta name="twitter:description" content="{{ .Site.Params.description }}">
+  <meta name="twitter:image" content="{{ .Site.Params.logo | absURL }}">
+  {{ end }}
 
   {{ "<!-- plugins -->" | safeHTML }}
   {{ range .Site.Params.plugins.css }}
