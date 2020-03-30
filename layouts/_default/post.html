@@ -7,7 +7,7 @@
         <div class="d-block">
         {{ range .Params.Categories }}
         <a href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}"
-            class="text-primary"><i class="fas fa-bars"></i><span style="margin-left:5px;">{{ . | title | humanize }}</span></a>
+            class="text-primary"><i class="fas fa-folder"></i><span style="margin-left:5px;">{{ . | title | humanize }}</span></a>
         {{ end }}
         </div>
         <div class="d-block my-3">
