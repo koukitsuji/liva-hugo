@@ -7,7 +7,7 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
   {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
   {{ hugo.Generator }}
-  <!-- Open Graph Protocol -->
+  {{ "<!-- Open Graph Protocol -->" | safeHTML }}
   <meta property="og:site_name" content="{{ .Site.Title }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:locale" content="ja_JP">
@@ -31,7 +31,7 @@
   <meta property="og:image" content="{{ .Site.Params.logo | absURL }}" />
   <meta property="og:description" content="{{ .Site.Params.description }}" />
   {{ end }}
-  <!-- Twitter -->
+  {{ "<!-- Meta for Twitter -->" | safeHTML }}
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@{{ .Site.Params.twitterID }}" />
   <meta name="twitter:image:alt" content="アイキャッチ">
@@ -44,6 +44,10 @@
   <meta name="twitter:description" content="{{ .Site.Params.description }}">
   <meta name="twitter:image" content="{{ .Site.Params.logo | absURL }}">
   {{ end }}
+
+  {{ "<!-- Google Analitycs -->" | safeHTML }}
+  {{ partial "marketing/google_analytics" . }}
+  {{ partial "marketing/google_tag_manager" . }}
 
   {{ "<!-- plugins -->" | safeHTML }}
   {{ range .Site.Params.plugins.css }}

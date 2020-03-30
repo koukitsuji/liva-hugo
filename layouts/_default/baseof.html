@@ -2,6 +2,8 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
     {{- partial "head.html" . -}}
     <body>
+        {{ "<!-- Google Analitycs -->" | safeHTML }}
+        {{ partial "marketing/google_tag_manager_body" . }}
         {{- partial "preloader.html" . -}}
         {{- partial "header.html" . -}}
         {{- block "main" . }}{{- end }}
