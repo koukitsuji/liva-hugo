@@ -1,13 +1,14 @@
 {{ define "main" }}
 
 <section class="section-sm">
+  <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <div class="d-block">
         {{ range .Params.Categories }}
         <a href="{{ "categories/" | relLangURL }}{{ . | urlize | lower }}"
-          class="text-primary"><i class="fas fa-folder"></i><span style="margin-left:5px;">{{ . | title | humanize }}</span></a>
+          class="text-primary"><i class="fas fa-folder"></i><span style="margin-left:5px;" itemprop="articleSection">{{ . | title | humanize }}</span></a>
         {{ end }}
         </div>
         <div class="d-block my-3">
@@ -21,24 +22,37 @@
           <!--<span>By {{ .Site.Params.Author }}</span>-->
           {{ if not .Params.HideDate }}
           <!--<span class="border-bottom border-primary px-2 mx-1"></span>-->
-          <i class="far fa-clock"></i><span style="margin-left:10px;">{{ .PublishDate.Format "02 January 2006" }}</span>
+          <i class="far fa-clock"></i><span style="margin-left:10px;"><time itemprop="datePublished" datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "02 January 2006" }}</time></span>
           {{ if .Params.update }}
-          <span style="margin-right:20px;">,</span><i class="fas fa-sync-alt"></i><span style="margin-left:10px;">{{ dateFormat "02 January 2006" .Params.update }}</span>
+          <span style="margin-right:20px;">,</span><i class="fas fa-sync-alt"></i><span style="margin-left:10px;"><time itemprop="dateModified" datetime="{{ dateFormat "2006-01-02" .Params.update }}">{{ dateFormat "02 January 2006" .Params.update }}</time></span>
           {{ end }}
           {{ end }}
         </div>
         {{ if .Params.image }}
-        <img src="{{ .Permalink }}{{ .Params.Image }}" class="img-fluid w-100 mb-4" alt="{{ .Title | markdownify }}">
+        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+        <img src="{{ .Permalink }}{{ .Params.Image }}" class="img-fluid w-100 mb-4" alt="{{ .Title | markdownify }}" itemprop="thumbnailUrl">
+        <meta itemprop="url" content="{{ .Permalink }}{{ .Params.Image }}">
+        </div>
         {{ end }}
-        <div class="content mb-5">
+        <div class="content mb-5" itemprop="articleBody">
           {{ .Content }}
         </div>
 
         <!-- comments -->
         {{ template "_internal/disqus.html" . }}
+
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+          <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="{{ .Site.Params.logo | absURL }}">
+          </div>
+          <meta itemprop="name" content="{{ .Site.Title }}">
+          <p itemprop="author" hidden>Kouki Tsuji</p>
+        </div>
+
       </div>
     </div>
   </div>
+  </article>
 </section>
 
 {{ end }}
