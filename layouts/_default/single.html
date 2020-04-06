@@ -41,13 +41,16 @@
         <!-- comments -->
         {{ template "_internal/disqus.html" . }}
 
+        <!-- Schema tag -->
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
           <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
             <meta itemprop="url" content="{{ .Site.Params.logo | absURL }}">
           </div>
           <meta itemprop="name" content="{{ .Site.Title }}">
-          <p itemprop="author" hidden>Kouki Tsuji</p>
         </div>
+        <p itemprop="author" hidden>Kouki Tsuji</p>
+        <p itemprop="headline" hidden>{{ .Description }}</p>
+        <p itemprop="mainEntityOfPage" hidden>{{ .Permalink | relLangURL }}</p>
 
       </div>
     </div>
