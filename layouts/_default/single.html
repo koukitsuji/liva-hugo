@@ -8,20 +8,20 @@
         <div class="d-block">
           <ul itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb">
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-              <a href="{{ .Site.BaseURL }}" class="text-primary" itemscope itemtype="http://schema.org/Thing" itemprop="item">
+              <a href="{{ .Site.BaseURL }}" class="text-primary" itemtype="http://schema.org/Thing" itemprop="item">
                 <i class="fas fa-home"></i><span style="margin-left:5px;">Home</span>
                 <span itemprop="name" hidden>{{ .Site.Title }}</span>
               </a>
               <meta itemprop="position" content="1" />
             </li>
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-              <a href="{{ "categories/" | relLangURL }}{{ index (.Params.Categories) 0 | urlize | lower }}" class="text-primary">
+              <a href="{{ "categories/" | relLangURL }}{{ index (.Params.Categories) 0 | urlize | lower }}" class="text-primary" itemtype="http://schema.org/Thing" itemprop="item">
                 <i class="fas fa-folder"></i><span itemprop="name" itemprop="articleSection" style="margin-left:5px;">{{ index (.Params.Categories) 0 }}</span>
               </a>
               <meta itemprop="position" content="2" />
             </li>
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" hidden>
-              <a href="{{ .Parent.Permalink }}" class="text-primary">
+              <a href="{{ .Parent.Permalink }}" class="text-primary" itemtype="http://schema.org/Thing" itemprop="item">
                 <span itemprop="name">{{ .Title }}</span>
               </a>
               <meta itemprop="position" content="3" />
