@@ -5,8 +5,28 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mb-5 mb-lg-0">
+        <div>
+          <ul class="breadcrumb">
+            <li>
+              <a href="{{ .Site.BaseURL }}" class="text-primary"><i class="fas fa-home"></i><span style="margin-left:5px;">Home</span></a>
+            </li>
+            <li>
+              <a href="{{ .Parent.Permalink }}" class="text-primary"><span>{{ .Parent.Title }}</span></a>
+            </li>
+            {{ if eq .Parent.Title "Tags"}}
+              <li>
+                <a href="{{ .Permalink }}" class="text-primary"><i class="fas fa-tag"></i><span style="margin-left:5px;">{{ .Title }}</span></a>
+              </li>
+            {{ end }}
+            {{ if eq .Parent.Title "Categories"}}
+              <li>
+                <a href="{{ .Permalink }}" class="text-primary"><i class="fas fa-folder"></i><span style="margin-left:5px;">{{ .Title }}</span></a>
+              </li>
+            {{ end }}
+          </ul>
+
+        </div>
         <div class="row">
-          {{- template "breadcrumb" (dict "node" . "start" .) }}
           {{ $paginator := .Paginate .Data.Pages }}
           {{ range $paginator.Pages }}
           {{ .Render "post" }}
