@@ -25,7 +25,7 @@
     <div class="row">
       <div class="col-12 text-center">
         <!--<a href="{{ .Site.BaseURL }}"><img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}"></a>-->
-        <a class="navbar-brand mx-auto desktop-view text-dark h3" style="font-weight:bold;" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        <a class="navbar-brand mx-auto text-dark h3" style="font-weight:bold;" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
       </div>
       <!--<div class="col-lg-3 col-sm-6 mb-5">
         <h6 class="mb-4">Contact Me</h6>
@@ -38,8 +38,8 @@
           </li>
         </ul>
       </div>-->
-      <div class="col-lg-3 hidden-sm hidden-mb"></div>
-      <div class="col-lg-3 col-sm-6 mb-5">
+      <div class="col-lg-1 hidden-sm hidden-mb"></div>
+      <div class="col-lg-3 col-sm-4 mb-5" style="text-align: center;">
         <h6 class="mb-4">Quick Links</h6>
         <ul class="list-unstyled">
           {{ range .Site.Menus.footer }}
@@ -47,7 +47,7 @@
           {{ end }}
         </ul>
       </div>
-      <div class="col-lg-3 col-sm-6 mb-5">
+      <div class="col-lg-4 col-sm-4 mb-5" style="text-align: center;">
         <h6 class="mb-4">Social Contacts</h6>
         <ul class="list-unstyled">
           {{ range .Site.Params.social }}
@@ -55,7 +55,7 @@
           {{ end }}
         </ul>
       </div>
-      <div class="col-lg-3 col-sm-6 mb-5">
+      <div class="col-lg-3 col-sm-4 mb-5" style="text-align: center;">
         <h6 class="mb-4">Categories</h6>
         {{- if isset .Site.Taxonomies "categories" }}
         {{- if not (eq (len .Site.Taxonomies.categories) 0) }}
